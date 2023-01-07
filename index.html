@@ -15,10 +15,10 @@
         padding: 1rem;
       }
 
-      #output {
-        border: 1px solid state;
-        height: 10vh;
+      #txt-output {
+        border: 1px solid black;
         width: 80%;
+        height: 10vh;
         margin: 1rem;
         padding: 1rem;
       }
@@ -27,21 +27,15 @@
   <body>
     <h1>Talk Banana Language</h1>
 
-    <textarea name="" id="" cols="30" rows="10"></textarea>
-
-    Input Button : <input type="text" id="input-btn" /> <br />
-    Input translator :<input type="text" name="translator" />
-    <button class="btn-primary">Primary Button</button>
     <textarea
       id="txt-input"
       placeholder="Put your text in English over here and we will convert it into Banana Lang."
     ></textarea>
+
     <button id="btn-translate">Translate</button>
 
-    <!-- first text area -->
-    <textarea name="" id="" cols="30" rows="10"></textarea>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
-
+    <div style="font-size: large">Output will be shown here :</div>
+    <div id="txt-output"></div>
     <script src="app.js" include="text/javascript"></script>
   </body>
 </html>

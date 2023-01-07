@@ -1,31 +1,32 @@
 var btnTranslate = document.querySelector("#btn-translate");
 var txtInput = document.querySelector("#txt-input");
-var outputDiv = document.querySelector("#output");
+var outputDiv = document.querySelector("#txt-output");
 
-// first text area
-var txtFirst = document.querySelector("textarea");
+var serverURL = "https://lessonfourapi.tanaypratap.repl.co/translate/yoda.json";
 
-//btn with class "btn-primary"
-var btnPrimary = document.querySelector(".btn-primary");
+function getTranslationURL(text)
+{
+    return serverURL + "?" + "text=" + text;
+}
 
-//element with id "input-btn"
-var inputButton = document.querySelector("#input-btn");
-
-//element with id "input-btn"
-var inputTranslateButton = document.querySelector("input[name = 'translator']");
+function errorHandler(error)
+{
+    console.log("Error occured",error);
+    alert("Something Wrong with server! Try again after some time.");
+}
 
 function clickHandler()
 {
-    console.log("clicked");
-    console.log("main text-area"+txtInput);
+    // outputDiv.innerText = "Translated text : " + txtInput.value;
+    var inputText = txtInput.value; 
+
+    //calling server for processing
+    fetch(getTranslationURL(inputText))
+        .then(response => response.json())
+        .then(json => console.log(json.contents.translated))
+        .catch(errorHandler)
+
 };
 
 btnTranslate.addEventListener("click", clickHandler) ;
 
-btnPrimary.addEventListener("click", function primaryClickHandler()
-{
-    console.log("first text area values: "+txtFirst);
-    console.log("Inputted text : "+inputButton);
-    console.log("Inputted translator : "+inputTranslateButton);
-
-});
